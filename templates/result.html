@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Results</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/result.css')}}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="success-badge">Submitted</div>
+        <h1>Welcome,<br><span>{{ name if name else 'Champion' }}</span>.</h1>
+
+        <div class="card">
+
+            <div class="row">
+                <span class="row-label">Full Name</span>
+                <span class="row-value">{{ name if name else '<span class="none">Not provided</span>' | safe }}</span>
+            </div>
+
+            <div class="row">
+                <span class="row-label">Email</span>
+                <span class="row-value">{{ email if email else '<span class="none">Not provided</span>' | safe }}</span>
+            </div>
+
+            <div class="row">
+                <span class="row-label">Location</span>
+                <span class="row-value">
+                    <span class="info-value">{{ location }}</span>
+                </span>
+            </div>
+
+
+            <div class="row">
+                <span class="row-label">Languages</span>
+                <span class="row-value">
+                    <span class="info-value">{{ languages }}</span>
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="row-label">Goal</span>
+                <span class="row-value">{{ goal if goal else '<span class="none">Not provided</span>' | safe }}</span>
+            </div>
+
+        </div>
+
+        <a href="/" class="back-link">← Take the survey again</a>
+
+    </div>
+</body>
+
+</html>
