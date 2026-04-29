@@ -16,20 +16,22 @@ A simple Flask web application that accepts a survey form submission and display
 ## Project Structure
 
 ```
-dojo_survey/
-├── app.py
+DOJO_SURVEY/
+├── main.py
 └── templates/
     ├── index.html
     └── result.html
+└── static/
+    ├── style.css
+    └── result.css
 ```
 
 ---
 
 ## Setup & Installation
 
-**1. Make sure Python 3 is installed**
-
-**2. Create and activate a virtual environment**
+ 
+**1. Create and activate a virtual environment**
 ```bash
 python -m venv venv
 
@@ -47,12 +49,12 @@ pip install flask
 
 **4. Run the app**
 ```bash
-python app.py
+python main.py
 ```
 
 **5. Open your browser and visit**
 ```
-http://localhost:5000
+http://localhost:5001
 ```
 
 ---
@@ -74,7 +76,7 @@ http://localhost:5000
   - Favorite Language (dropdown)
   - Comment — optional (textarea)
 
-- **`/result`** — Receives the POST request, reads the form fields using `request.form.get()`, and renders them on a results page with a **Go Back** button.
+- **`/result`** — Receives the POST request, reads the form fields using `request.form['']`, and renders them on a results page with a **Go Back** button.
 
 ---
 
@@ -82,13 +84,13 @@ http://localhost:5000
 
 ```python
 # app.py — reading form data sent via POST
-name     = request.form.get('name', '')
-location = request.form.get('location', '')
-language = request.form.get('language', '')
-comment  = request.form.get('comment', '')
+name     = request.form['name']
+location = request.form['location']
+language = request.form['language']
+comment  = request.form['comment']
 ```
 
-> `request.form.get('field_name')` — safely reads a single form field.  
+> `request.form['field_name']` — safely reads a single form field.  
 > `print(request.form)` — prints all submitted data to the terminal for debugging.
 
 Form inputs must have a `name` attribute to be accessible from `request.form`.
